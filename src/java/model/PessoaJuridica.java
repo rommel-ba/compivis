@@ -1,7 +1,17 @@
 package model;
 
-public class PessoaJuridica extends Pessoa {
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+/*
+* Classe pessoa juridica
+* Contem os atributos e metodos de uma pessoa Juridica
+*/
+
+@Entity
+@Table(name = "pessoa_juridica")
+public class PessoaJuridica extends Pessoa{
+    
     private String cnpj;
     private String telefone;
 

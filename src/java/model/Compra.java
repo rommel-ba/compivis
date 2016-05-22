@@ -31,14 +31,14 @@ public class Compra extends Pedido {
             item = new Item();
             item.setProduto(produto);
             item.setQuantidade(quantidade);
-            items.add(item);
+            this.setItems(item);
             
     }
     
     /* Metodo para efetuar a compra dos itens adicionados
     */
     public void comprar(){
-        for (Item item1 : items){
+        for (Item item1 : this.getItems()){
             item1.getProduto().baixarEstoque(item1.getQuantidade());
         }
         

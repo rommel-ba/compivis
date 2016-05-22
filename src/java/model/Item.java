@@ -1,11 +1,22 @@
 package model;
 
+/* Classe de itens do pedido
+* contem os atributos e metodos relativos
+* aos itens do pedido
+*/
 
 public class Item {
-    private Produto produto;
-    private float valor;
-    private int quantidade;
+    
+    private Produto produto; //Produto relativo a um item do pedido
+    private float valor; // Valor do produto * a quantidade
+    private int quantidade; // Quantidade do mesmo produto nesse item
 
+    /*
+    * Metodo que totaliza o valor do item com base
+    * no produto selecionado e na quantidade
+    * o metodo e privado para ser acessado somente pelos 
+    * objetos da classe
+    */
     private void setValor(){
         this.valor = this.produto.getValor() * this.quantidade;
     }

@@ -1,11 +1,14 @@
 package model;
 
-import java.io.Serializable;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Produto implements Serializable {
+/*
+* Classe produto, contem os atributos e metodos
+* de um produto
+*/
+public class Produto{
     private String nome;
     private String descricao;
     private float valor;
@@ -41,29 +44,38 @@ public class Produto implements Serializable {
         return estoque;
     }
 
+    /*
+    * Metodo para atualizar o estoque do produto
+    * @param int estoque - quantidade a ser adicionada ao estoque atual
+    */
     public void setEstoque(int estoque) {
-        bankLock.lock();
+        bankLock.lock(); //Inicio da seção critica
         try{
             this.estoque += estoque;
             estoqueSuficiente.signalAll();
         }finally{
-            bankLock.unlock();
+            bankLock.unlock(); //Fim da seção critica
         }
     }
     
+    /*
+    * Metodo para dar baixa no estoque do produto
+    * @param int quantidade - quantidade a ser baixada do estoque
+    */
+    
     public void baixarEstoque (int quantidade){
-        bankLock.lock();
+        bankLock.lock(); //Inicio da seção critica
         try{
-            while(this.estoque < quantidade)
-                try{
-                    estoqueSuficiente.await();
+            while(this.estoque <= quantidade)  //verifica se a quantidade a baixar
+                try{                           //é menor ou igual a quantidade disponivel
+                    estoqueSuficiente.await(); //coloca a operação em espera caso não haja estoque
                 }catch(InterruptedException e){
                     
                 }
-            this.estoque -= quantidade;
+            this.estoque -= quantidade; // retira do estoque a quantidade desejada
             
         }finally{
-            bankLock.unlock();
+            bankLock.unlock(); //Fim da seção critica
         }
     }
     

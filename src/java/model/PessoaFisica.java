@@ -1,7 +1,14 @@
 package model;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+/*
+* Classe pessoa fisica, contém os atributos e metodos
+* relativos aos clientes
+*/
+@Entity
+@Table(name = "pessoa_fisica")
 public class PessoaFisica extends Pessoa  {
     
     

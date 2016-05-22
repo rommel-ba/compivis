@@ -10,7 +10,7 @@ public class Pedido {
     private int numero;
     private String data;
     private Pessoa pessoa;
-    protected ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
 
     
     
@@ -34,8 +34,8 @@ public class Pedido {
         return items;
     }
 
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
+    public void setItems(Item item) {
+        this.items.add(item);
     }
 
     public String getData() {
