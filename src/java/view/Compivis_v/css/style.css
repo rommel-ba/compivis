@@ -1,0 +1,137 @@
+/**
+ ** style.css - COMPIVI$'s custom CSS
+ ** Author: Jeison Dias;
+*/
+
+/**
+ ** Index:
+ *  1 - Global
+ *  2 - Body
+*/
+
+/** 1 - Global **/
+
+*{
+  margin: 0px;
+  padding: 0px;
+
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.green{
+  background: #107c71;
+  width: 100%;
+  height: 75px;
+  margin-top: -10px;
+}
+
+.green_inside{
+  width: 890px;
+  height: 68px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/** 2 - Body **/
+.container {
+    width: 890px;
+    margin-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+  }
+
+.logo{
+  	width: 190px;
+  	height: 48px;
+  	float: left;
+  	margin-left: 18px;
+    margin-top: 20px;
+  }
+.menu{
+    list-style:none;
+    float:right;
+    margin-right: 25px;
+    margin-top: 25px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+.menu li{
+    position:relative;
+    float:left;
+  }
+
+.menu li a{
+    color:#fff;
+    text-decoration:none;
+    padding:5px 10px;
+    display:block;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+.menu li   ul{
+    position:absolute;
+    top:25px;
+    background:#107c71;
+    display:none;
+  }
+
+.menu li:hover ul, .menu li.over ul{
+    display:block;
+  }
+
+.menu li ul li{
+    display:block;
+    width:150px;
+}
+.post_area{
+  	width: 850px;
+  	height: auto;
+    margin-left: 20px;
+  }
+
+  .title_page{
+    font-family: 'Open Sans', sans-serif;
+  	font-size: 26px;
+  	color: #5c666a;
+  	width: 560px;
+  	height: 50px;
+    margin-left: 20px;
+    margin-top: 40px;
+  }
+
+  .text_inside_post{
+    width: auto;
+    font-family: 'Open Sans', sans-serif;
+  	font-size: 18px;
+  	color: #5c666a;
+    margin-left: 20px;
+    margin-top: 70px;
+  }
+
+.footer {
+  width: 100%;
+  bottom: 0;
+  height: 50px;
+  position:relative;
+  background-color: #383838;
+  bottom: -20px;
+}
+
+.footer_inside{
+  width: 890px;
+  height: 38px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
