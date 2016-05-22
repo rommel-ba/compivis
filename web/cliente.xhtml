@@ -6,11 +6,24 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition template="template.xhtml">
         <ui:define name="body">
-                    <div>TODO write content</div>
-
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nome"/>
+                    <h:inputText value="#{cliente.cliente.nome}" />
+                    <h:outputLabel value="CPF"/>
+                    <h:inputText value="#{cliente.cliente.cpf}"/>
+                    <h:outputLabel value="Endereço"/>
+                    <h:inputText value="#{cliente.cliente.endereco}"/>
+                    <h:outputLabel value="Data de Nascimento"/>
+                    <h:inputText value="#{cliente.cliente.dataNascimento}"/>
+                </h:panelGrid>
+                <h:commandButton value="Cadastrar" action="#{cliente.cadastrar}"/>
+            </h:form>
+            <h:outputText value="#{cliente.cliente.nome}" rendered="#{cliente.cliente.nome.length() > 0}"></h:outputText>
         </ui:define>
         
     </ui:composition>
