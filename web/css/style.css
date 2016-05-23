@@ -14,7 +14,6 @@
 *{
   margin: 0px;
   padding: 0px;
-
 }
 
 body{
@@ -96,6 +95,7 @@ body{
   	width: 850px;
   	height: auto;
     margin-left: 20px;
+    text-align: justify;
   }
 
   .title_page{
@@ -134,4 +134,13 @@ body{
   margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.corpo{
+  height: 600px;
+}
+
+.form{
+  position: relative;
+  left: 33%;
 }

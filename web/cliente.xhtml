@@ -10,8 +10,8 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <ui:composition template="template.xhtml">
         <ui:define name="body">
-            <h:form>
-                <h:panelGrid columns="2">
+            <h:form class="corpo">
+                <h:panelGrid columns="2" class="form">
                     <h:outputLabel value="Nome"/>
                     <h:inputText value="#{cliente.cliente.nome}" />
                     <h:outputLabel value="CPF"/>
@@ -20,8 +20,9 @@ and open the template in the editor.
                     <h:inputText value="#{cliente.cliente.endereco}"/>
                     <h:outputLabel value="Data de Nascimento"/>
                     <h:inputText value="#{cliente.cliente.dataNascimento}"/>
+                    <h:commandButton value="Cadastrar" action="#{cliente.cadastrar}"/>
                 </h:panelGrid>
-                <h:commandButton value="Cadastrar" action="#{cliente.cadastrar}"/>
+                
             </h:form>
             <h:outputText value="#{cliente.cliente.nome}" rendered="#{cliente.cliente.nome.length() > 0}"></h:outputText>
         </ui:define>
