@@ -13,13 +13,13 @@ and open the template in the editor.
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nome"/>
-                    <h:inputText value="#{produto.produto.nome}" />
-                    <h:outputLabel value="Descrição"/>
-                    <h:inputText value="#{produto.produto.descricao}" />
-                    <h:outputLabel value="Valor"/>
-                    <h:inputText value="#{produto.produto.valor}"/>
-                    <h:outputLabel value="Estoque"/>
-                    <h:inputText value="#{produto.produto.estoque}"/>
+                    <h:inputText value="#{fornecedor.fornecedor.nome}" />
+                    <h:outputLabel value="CNPJ"/>
+                    <h:inputText value="#{fornecedor.fornecedor.cnpj}"/>
+                    <h:outputLabel value="Endereço"/>
+                    <h:inputText value="#{fornecedor.fornecedor.endereco}"/>
+                    <h:outputLabel value="Telefone"/>
+                    <h:inputText value="#{fornecedor.fornecedor.telefone}"/>
                 </h:panelGrid>
                 <h:commandButton value="Cadastrar" action="#{fornecedor.cadastrar}"/>
             </h:form>
