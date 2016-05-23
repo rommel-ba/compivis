@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="template.xhtml">
         <ui:define name="body">
             <h:form class="corpo">
@@ -22,9 +23,14 @@ and open the template in the editor.
                     <h:inputText value="#{cliente.cliente.dataNascimento}"/>
                     <h:commandButton value="Cadastrar" action="#{cliente.cadastrar}"/>
                 </h:panelGrid>
+                <h:dataTable value="#{cliente.lista}" var="clientes" >
+                    <h:column>
+                        #{clientes.nome} 
+                    </h:column>
+                </h:dataTable>
                 
             </h:form>
-            <h:outputText value="#{cliente.cliente.nome}" rendered="#{cliente.cliente.nome.length() > 0}"></h:outputText>
+            
         </ui:define>
         
     </ui:composition>
