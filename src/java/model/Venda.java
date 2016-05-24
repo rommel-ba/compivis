@@ -1,20 +1,35 @@
 package model;
 
-import java.lang.annotation.Documented;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /* Classe venda contem os atributos e metodos 
 * para realizar uma venda
 */
+@Entity
+@Table(name = "vendas")
 public class Venda extends Pedido {
-    private Item item;
+    @ManyToOne(targetEntity = PessoaJuridica.class)
+    private PessoaJuridica pessoaJuridica;
+    @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
+    private List<Item> items;
+
+    public Venda() {
+        this.items = new ArrayList<>();
+    }
 
     /* Metodo construtor da classe Venda
     * @param Pessoa pessoa - Pessoa Juridica (fornecedor)
     */
-    public Venda(Pessoa pessoa) {
-        this.setPessoa(pessoa); // metodo herdado da classe pedido
+    public Venda(PessoaJuridica pessoaJuridica) {
+        this.items = new ArrayList<>();
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy"); //estabelece o formato para a data
         data.format(new Date(System.currentTimeMillis())); //seta a data da operação como a data atual do sistema
         this.setData(data.toString()); //data convertida em String para metodo herdado da classe pedido
@@ -25,10 +40,10 @@ public class Venda extends Pedido {
     * @param int quantidade - quantidade do produto adicionado
     */    
     public void addItem(Produto produto, int quantidade){
-            item = new Item();
+            Item item = new Item();
             item.setProduto(produto);
             item.setQuantidade(quantidade);
-            this.setItems(item);
+            items.add(item);
             
     }
     
@@ -36,7 +51,7 @@ public class Venda extends Pedido {
     
     */
     public void comprar(){
-        for (Item item1 : this.getItems()){
+        for (Item item1 : items){
             item1.getProduto().setEstoque(item1.getQuantidade());
         }
     }

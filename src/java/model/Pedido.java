@@ -1,27 +1,25 @@
 package model;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /*Classe Pedido 
 * Define os atributos básicos de um pedido
 */
-
-public class Pedido {
+@MappedSuperclass
+public class Pedido implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private int numero;
     private String data;
-    private Pessoa pessoa;
-    private ArrayList<Item> items = new ArrayList<>();
-
     
     
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
+    
     public int getNumero() {
         return numero;
     }
@@ -30,20 +28,20 @@ public class Pedido {
         this.numero = numero;
     }
 
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(Item item) {
-        this.items.add(item);
-    }
-
     public String getData() {
         return data;
     }
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

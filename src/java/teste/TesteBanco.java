@@ -1,8 +1,11 @@
 package teste;
 
 import hibernate.HibernateUtil;
+import model.Compra;
+import model.Item;
 import model.PessoaFisica;
-import model.PessoaJuridica;
+import model.Produto;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -20,24 +23,35 @@ public class TesteBanco {
         } finally {
             
         }
+        String consulta = "2";
+        Query query = sessao.createQuery("from PessoaFisica ");
+        query.setMaxResults(1);
+        PessoaFisica pessoa = (PessoaFisica) query.uniqueResult();
+        System.out.println("Query primeira pessoa = "+pessoa.getNome());
         
-        PessoaJuridica juridica = new PessoaJuridica();
-        juridica.setNome("Juridica");
-        sessao.save(juridica);
+        query = sessao.createQuery("from Produto ");
+        query.setMaxResults(1);
+        Produto produto = (Produto) query.uniqueResult();
+        System.out.println("Query primeiro produto = " + produto.getNome());
+        /*
+        Compra compra = new Compra();
+        compra.setPessoaFisica(pessoa);
+        compra.addItem(produto, 5);
+        sessao.save(compra);
         transacao.commit();
+        */
+        query = sessao.createQuery("from Compra");
+        query.setMaxResults(1);
+        Compra compra = (Compra) query.uniqueResult();
+        System.out.println("Pessoa da compra = " + compra.getPessoaFisica().getNome()+"\n"
+                + "Produto da compra = " + compra.getProduto().getProduto().getNome() +"\n"
+                + "Valor = " + compra.getProduto().getProduto().getValor()+ "\n"
+                + "Quantidade = " + compra.getProduto().getQuantidade()+ "\n"
+                + "Total = " + compra.getProduto().getTotal());
+        //sessao.save(pedido);
+        //transacao.commit();
         sessao.close();
+                
         
-        try {
-            sessao = HibernateUtil.getSession().openSession();
-            transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
-        } finally {
-            
-        }
-        
-        PessoaFisica fisica = new PessoaFisica();
-        fisica.setNome("Fisica real");
-        sessao.save(fisica);
-        transacao.commit();
     }
 }

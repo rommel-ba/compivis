@@ -16,6 +16,7 @@ import org.hibernate.Transaction;
 public class ClienteBean {
     private PessoaFisica cliente = new PessoaFisica();
     private Session sessao = null;
+    
     public PessoaFisica getCliente() {
         return cliente;
     }
@@ -31,7 +32,6 @@ public class ClienteBean {
         try {
             sessao = HibernateUtil.getSession().openSession();
             transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
         } finally {
             
         }
