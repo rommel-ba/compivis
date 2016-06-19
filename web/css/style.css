@@ -36,6 +36,39 @@ body{
   margin-right: auto;
   margin-left: auto;
 }
+table{
+    border: 0px;
+}
+
+th, td{
+    border: 0px;    
+}
+
+table.bordasimples{
+    width: 50%;
+    border: 1px solid #000; 
+    border-collapse: collapse;
+}
+table.bordasimples tr td{
+    border: 1px solid #000;  
+}
+
+table.bordasimples th{
+    background-color: #107c71;
+    color: white;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2}
+
+table.bordasimples td{
+    padding: 10px;
+    text-align: left;
+
+}
+
+table.bordasimples td{
+    height: 30px;    
+}
 
 /** 2 - Body **/
 .container {
@@ -47,12 +80,20 @@ body{
     margin-left: auto;
     position: relative;
   }
+  
+  .left_cont{
+      width:380px;
+  }
+  
+  .rigth_cont{
+      width: 480px;
+  }
 
 .logo{
-  	width: 190px;
-  	height: 48px;
-  	float: left;
-  	margin-left: 18px;
+    width: 190px;
+    height: 48px;
+    float: left;
+    margin-left: 18px;
     margin-top: 20px;
   }
 .menu{
@@ -92,29 +133,29 @@ body{
     width:150px;
 }
 .post_area{
-  	width: 850px;
-  	height: auto;
+    width: 850px;
+    height: auto;
     margin-left: 20px;
     text-align: justify;
   }
 
   .title_page{
     font-family: 'Open Sans', sans-serif;
-  	font-size: 26px;
-  	color: #5c666a;
-  	width: 560px;
-  	height: 50px;
+    font-size: 26px;
+    color: #5c666a;
+    width: 560px;
+    height: 50px;
     margin-left: 20px;
     margin-top: 40px;
   }
 
-  .text_inside_post{
-    width: auto;
-    font-family: 'Open Sans', sans-serif;
-  	font-size: 18px;
-  	color: #5c666a;
-    margin-left: 20px;
-    margin-top: 70px;
+.text_inside_post{
+   width: auto;
+   font-family: 'Open Sans', sans-serif;
+   font-size: 18px;
+   color: #5c666a;
+   margin-left: 20px;
+   margin-top: 70px;
   }
 
 .footer {
@@ -134,10 +175,6 @@ body{
   margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
-}
-
-.corpo{
-  height: 600px;
 }
 
 .form{
