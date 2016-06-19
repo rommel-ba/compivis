@@ -8,18 +8,22 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class ProdutoHibernate implements HibernatePersist<Produto> {
+
     private Session sessao = null;
     private Transaction transacao = null;
     
-    
-    @Override
-    public void salvar(Produto objeto) {
+    private void abrirConexao(){
         try {
             sessao = HibernateUtil.getSession().openSession();
             transacao = sessao.beginTransaction();
         } finally {
             
         }
+    }
+    
+    @Override
+    public void salvar(Produto objeto) {
+        this.abrirConexao();
         objeto.setAtivo(true);
         sessao.save(objeto);
         transacao.commit();
@@ -28,13 +32,7 @@ public class ProdutoHibernate implements HibernatePersist<Produto> {
 
     @Override
     public void atualizar(Produto objeto) {
-        try {
-            sessao = HibernateUtil.getSession().openSession();
-            transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
-        } finally {
-            
-        }
+        this.abrirConexao();
         sessao.update(objeto);
         transacao.commit();
         sessao.close();
@@ -42,13 +40,7 @@ public class ProdutoHibernate implements HibernatePersist<Produto> {
 
     @Override
     public void deletar(Produto objeto) {
-        try {
-            sessao = HibernateUtil.getSession().openSession();
-            transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
-        } finally {
-            
-        }
+        this.abrirConexao();
         objeto.setAtivo(false);
         sessao.update(objeto);
         transacao.commit();
@@ -57,27 +49,16 @@ public class ProdutoHibernate implements HibernatePersist<Produto> {
 
     @Override
     public List listarTodos() {
-        try {
-            sessao = HibernateUtil.getSession().openSession();
-            transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
-        } finally {
-            
-        }
+        this.abrirConexao();
         Criteria lista = sessao.createCriteria(Produto.class);
         return lista.list();
     }
 
     @Override
     public List listarAtivo(String nome) {
-        try {
-            sessao = HibernateUtil.getSession().openSession();
-            transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
-        } finally {
-            
-        }
-        Query query = sessao.createQuery("from Produto where ativo = true and nome like '" + nome+ "%'");;
+        this.abrirConexao();
+        Query query = sessao.createQuery("from Produto where ativo = true and nome like '" + nome+ "%'");
+        query.setMaxResults(20);
         return query.list();
     }
     
