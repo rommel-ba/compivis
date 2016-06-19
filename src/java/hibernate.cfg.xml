@@ -10,5 +10,11 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="model.PessoaJuridica"/>
     <mapping class="model.PessoaFisica"/>
+    <mapping class="model.Compra"/>
+    <mapping class="model.Venda"/>
+    <mapping class="model.Produto"/>
+    <mapping class="model.Item"/>
+    <mapping class="model.Pessoa"/>
+    <mapping class="model.Pedido"/>
   </session-factory>
 </hibernate-configuration>
