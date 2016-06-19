@@ -12,6 +12,7 @@ and open the template in the editor.
     <ui:composition template="template.xhtml">
         <ui:define name="body">
             <h:form class="container" enctype="multipart/form-data">
+                <div class="left_cont">
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nome"/>
                     <h:inputText value="#{produto.produto.nome}" />
@@ -21,8 +22,10 @@ and open the template in the editor.
                     <h:inputText value="#{produto.produto.valor}"/>
                     <h:outputLabel value="Estoque"/>
                     <h:inputText value="#{produto.produto.estoque}"/>
-                </h:panelGrid>
+                </h:panelGrid>                    
                 <h:commandButton value="Salvar" action="#{produto.cadastrar}"/>
+                </div>
+                
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Buscar produto"/>
                     <h:inputText value="#{produto.nome}"/>

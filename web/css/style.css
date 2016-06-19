@@ -82,11 +82,15 @@ table.bordasimples td{
   }
   
   .left_cont{
-      width:380px;
+      width:350px;
+      height: auto;
+      float: left;
   }
   
-  .rigth_cont{
-      width: 480px;
+  .right_cont{
+      width: 580px;
+      height: auto;
+      float: right;
   }
 
 .logo{
