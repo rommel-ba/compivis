@@ -2,7 +2,6 @@ package hibernate;
 
 import java.util.List;
 import model.Produto;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -48,10 +47,11 @@ public class ProdutoHibernate implements HibernatePersist<Produto> {
     }
 
     @Override
-    public List listarTodos() {
+    public List listarTodos(String nome) {
         this.abrirConexao();
-        Criteria lista = sessao.createCriteria(Produto.class);
-        return lista.list();
+        Query query = sessao.createQuery("from Produto where ativo = true and nome like '" + nome+ "%'");
+        query.setMaxResults(20);
+        return query.list();
     }
 
     @Override
