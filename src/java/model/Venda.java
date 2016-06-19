@@ -16,8 +16,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "vendas")
 public class Venda extends Pedido {
-    @ManyToOne(targetEntity = PessoaJuridica.class)
-    private PessoaJuridica pessoaJuridica;
+    @ManyToOne(targetEntity = Fornecedor.class)
+    private Fornecedor pessoaJuridica;
     @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
     private List<Item> items;
 
@@ -28,7 +28,7 @@ public class Venda extends Pedido {
     /* Metodo construtor da classe Venda
     * @param Pessoa pessoa - Pessoa Juridica (fornecedor)
     */
-    public Venda(PessoaJuridica pessoaJuridica) {
+    public Venda(Fornecedor pessoaJuridica) {
         this.items = new ArrayList<>();
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy"); //estabelece o formato para a data
         data.format(new Date(System.currentTimeMillis())); //seta a data da operação como a data atual do sistema

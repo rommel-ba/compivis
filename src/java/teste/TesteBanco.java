@@ -5,7 +5,7 @@ import hibernate.HibernateUtil;
 import hibernate.ProdutoHibernate;
 import model.Compra;
 import model.Item;
-import model.PessoaFisica;
+import model.Cliente;
 import model.Produto;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -28,7 +28,7 @@ public class TesteBanco {
         String consulta = "9";
         Query query = sessao.createQuery("from PessoaFisica");
         query.setMaxResults(1);
-        PessoaFisica pessoa = (PessoaFisica) query.uniqueResult();
+        Cliente pessoa = (Cliente) query.uniqueResult();
         System.out.println("Query primeira pessoa = "+pessoa.getNome());
         
         

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 */
 @Entity
 @Table(name = "pessoa_fisica")
-public class PessoaFisica extends Pessoa  {
+public class Cliente extends Pessoa  {
     
     
     private String cpf;

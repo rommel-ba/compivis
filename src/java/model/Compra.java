@@ -17,8 +17,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "compras")
 public class Compra extends Pedido {
-    @ManyToOne(targetEntity = PessoaFisica.class, cascade = CascadeType.ALL)
-    private PessoaFisica pessoaFisica;
+    @ManyToOne(targetEntity = Cliente.class, cascade = CascadeType.ALL)
+    private Cliente pessoaFisica;
     
     @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
     private List<Item> items = new ArrayList<>();
@@ -30,18 +30,18 @@ public class Compra extends Pedido {
     @param Pessoa pessoa - pessoa que realiza o pedido
     
     */  
-    public Compra(PessoaFisica pessoaFisica) {
+    public Compra(Cliente pessoaFisica) {
         this.pessoaFisica = pessoaFisica;
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyy");
         data.format(new Date(System.currentTimeMillis()));
         this.setData(data.toString());
     }
 
-    public PessoaFisica getPessoaFisica() {
+    public Cliente getPessoaFisica() {
         return pessoaFisica;
     }
 
-    public void setPessoaFisica(PessoaFisica pessoaFisica) {
+    public void setPessoaFisica(Cliente pessoaFisica) {
         this.pessoaFisica = pessoaFisica;
     }
     

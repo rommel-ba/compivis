@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "pessoa_juridica")
-public class PessoaJuridica extends Pessoa{
+public class Fornecedor extends Pessoa{
     
     private String cnpj;
     private String telefone;

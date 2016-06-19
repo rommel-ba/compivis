@@ -1,63 +1,43 @@
 
 package beans;
 
-import hibernate.HibernateUtil;
+import hibernate.FornecedorHibernate;
+import hibernate.HibernatePersist;
 import java.util.List;
-import javax.ejb.BeforeCompletion;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import model.PessoaJuridica;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import model.Fornecedor;
 
 @ManagedBean(name = "fornecedor")
 @RequestScoped
 public class FornecedorBean {
-    private PessoaJuridica fornecedor = new PessoaJuridica();
-    private Session sessao = null;
-    public PessoaJuridica getFornecedor() {
+    private Fornecedor fornecedor = new Fornecedor();
+    private String nome;
+    private HibernatePersist fornecedorHibernate = new FornecedorHibernate();
+    
+    public Fornecedor getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(PessoaJuridica fornecedor) {
+    public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
     
     public void cadastrar(){
-        
-        Transaction transacao;
-        
-        try {
-            sessao = HibernateUtil.getSession().openSession();
-            transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
-        } finally {
-            
-        }
-        sessao.save(fornecedor);
-        transacao.commit();
-        sessao.close();
+        fornecedorHibernate.salvar(fornecedor);
+        fornecedor = new Fornecedor();
     }
     
     public List getLista(){
-        Transaction transacao;
-        
-        try {
-            sessao = HibernateUtil.getSession().openSession();
-            transacao = sessao.beginTransaction();
-            System.out.println("Conectou ao banco");
-        } finally {
-            
-        }
-        Criteria lista = sessao.createCriteria(PessoaJuridica.class);
-        return lista.list();
-        
+        return fornecedorHibernate.listarAtivo(nome);
     }
-    
-    @BeforeCompletion
-    public void fim(){
-        sessao.close();
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     
 }
