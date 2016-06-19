@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "compras")
 public class Compra extends Pedido {
-    @ManyToOne(targetEntity = PessoaFisica.class)
+    @ManyToOne(targetEntity = PessoaFisica.class, cascade = CascadeType.ALL)
     private PessoaFisica pessoaFisica;
     
     @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)

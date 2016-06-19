@@ -1,4 +1,3 @@
-
 package beans;
 
 import hibernate.HibernateUtil;

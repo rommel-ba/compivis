@@ -20,6 +20,7 @@ public class Produto implements Serializable{
     private String descricao;
     private float valor;
     private int estoque;
+    private boolean ativo;
     
     //private final  Lock bankLock = new ReentrantLock();
     //private final  Condition estoqueSuficiente = bankLock.newCondition();
@@ -60,6 +61,14 @@ public class Produto implements Serializable{
         this.id = id;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
     
     /*
     * Metodo para atualizar o estoque do produto

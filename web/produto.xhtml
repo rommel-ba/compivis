@@ -23,6 +23,10 @@ and open the template in the editor.
                     <h:inputText value="#{produto.produto.estoque}"/>
                 </h:panelGrid>
                 <h:commandButton value="Salvar" action="#{produto.cadastrar}"/>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Buscar produto"/>
+                    <h:inputText value="#{produto.nome}"/>
+                </h:panelGrid>
                 <h:dataTable value="#{produto.lista}" var="produtos" >
                     <h:column>
                         <h:outputText value="#{produtos.nome}"/>

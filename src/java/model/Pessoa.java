@@ -1,12 +1,9 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 
 /*
@@ -22,6 +19,7 @@ public abstract class Pessoa implements Serializable{
     private int id;
     private String nome;
     private String endereco;
+    private boolean ativo;
 
     public String getNome() {
         return nome;
@@ -41,6 +39,14 @@ public abstract class Pessoa implements Serializable{
 
     public int getId() {
         return id;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
     
     
