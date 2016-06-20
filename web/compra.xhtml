@@ -13,31 +13,15 @@
                     <div class="title_page">Comprar no Compivi$</div>
                     <div class="post_area">
                         <h:form>
-                            <h:panelGrid columns="3">
-                                <h:outputLabel value="Cliente"/>
-
-                                <h:inputText value="#{cliente.cliente.nome}"/>
-
-                                <h:commandButton value="Pesquisar" type="button" onclick="PF('popCliente').show(), PF('popCliente').setvisible(true)">
-                                    <p:dialog widgetVar="popCliente" minHeight="40" minWidth="40" modal="true" closable="false">
-                                        <h:inputText value="#{cliente.nome}" id="nome"/>
-                                        <h:commandButton value="pesquisar" onclick="focus(nome)"/>
-                                        <h:dataTable value="#{cliente.lista}" var="clientes" rendered="#{not empty cliente.lista}">
-                                            <h:column>
-                                                <f:facet name="header">Nome</f:facet>
-                                                <h:outputText value="#{clientes.nome}"/>
-                                                <h:commandButton value="Selecionar" >
-                                                    <f:setPropertyActionListener target="#{cliente.cliente}" value="#{clientes}"/>
-                                                </h:commandButton>
-                                            </h:column>
-                                        </h:dataTable> 
-                                    </p:dialog>
-                                </h:commandButton>
-
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Cliente" />
+                                <h:selectOneMenu value="#{comprasBean.clienteSelecionado}">
+                                    <f:selectItems value="#{comprasBean.clientesSelect}"/>
+                                </h:selectOneMenu>
+                                
                             </h:panelGrid>
                         </h:form>
                     </div>
-
                 </div>
             </h:form>
         </ui:define>

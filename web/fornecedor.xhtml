@@ -24,12 +24,12 @@ and open the template in the editor.
                     <h:inputText value="#{fornecedor.fornecedor.telefone}"/>
                 </h:panelGrid>
                 <h:commandButton value="Cadastrar" action="#{fornecedor.cadastrar}"/>
-                <h:panelGrid columns="2">
+                <br></br>
+                <h:panelGroup>
                     <h:outputLabel value="Buscar Cliente"/>
                     <h:inputText value="#{fornecedor.nome}"/>
                     <h:commandButton value="Buscar"/>
-                    
-                </h:panelGrid>
+                </h:panelGroup>
                 
              <h:form id="lista-fornecedores">
                  <h:dataTable value="#{fornecedor.lista}" var="fornecedores" class="bordasimples" rendered="#{not empty fornecedor.lista}">

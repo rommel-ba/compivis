@@ -26,12 +26,12 @@ and open the template in the editor.
                         <h:inputText value="#{produto.produto.estoque}"/>
                     </h:panelGrid>                    
                     <h:commandButton value="Salvar" action="#{produto.cadastrar}"/>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Buscar produto"/>
-                    <h:inputText value="#{produto.nome}"/>
-                    <h:commandButton value="Buscar"/>
-                    
-                </h:panelGrid>
+                    <h:panelGroup>
+                        <h:outputLabel value="Buscar produto"/>
+                        <h:inputText value="#{produto.nome}"/>
+                        <h:commandButton value="Buscar"/>    
+                    </h:panelGroup>
+
                 </h:panelGrid>
                     <h:form id="lista-produtos">
                         <h:dataTable value="#{produto.lista}" var="produtos" class="bordasimples" rendered="#{not empty produto.lista}">
