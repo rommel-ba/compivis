@@ -100,7 +100,57 @@ table.bordasimples td{
     margin-left: 18px;
     margin-top: 20px;
   }
+
+  #menu{
+      margin-top: 25px;
+      margin-right: 25px;
+      float: right;
+  }
+  
 .menu{
+    list-style:none;
+    float:right;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13.8px;
+}
+
+.menu li{
+    position:relative;
+    float:left;
+}
+
+.menu li a{
+    color:#fff;
+    text-decoration:none;
+    padding:5px 10px;
+    display:block;
+}
+
+.menu li a:hover{
+    background:#383838;
+    color:#fff;
+    -moz-box-shadow:0 3px 10px 0 #CCC; 
+    -webkit-box-shadow:0 3px 10px 0 #ccc; 
+}
+
+.menu li   ul{
+    position:absolute;
+    top:25px;
+    left:0;
+    background-color:#107c71;
+    display:none;
+}
+
+.menu li:hover ul, .menu li.over ul{
+    display:block;
+}
+
+.menu li ul li{ 
+    display:block;
+    width:150px;
+}
+
+/*.menu{
     list-style:none;
     float:right;
     margin-right: 25px;
@@ -120,22 +170,33 @@ table.bordasimples td{
     display:block;
     font-family: 'Open Sans', sans-serif;
   }
+  
+  .menu li a:hover{
+    background:#333; 
+    color:#fff; 
+    -moz-box-shadow:0 3px 10px 0 #CCC; 
+    -webkit-box-shadow:0 3px 10px 0 #ccc; 
+    display:block;
+ }
 
-.menu li   ul{
+.menu li ul{
     position:absolute;
     top:25px;
     background:#107c71;
-    display:none;
   }
 
-.menu li:hover ul, .menu li.over ul{
-    display:block;
+  .menu li:hover ul, .menu li.over ul{
+      display: block;
   }
-
+  
 .menu li ul li{
     display:block;
     width:150px;
+    height: auto;
 }
+*/
+
+
 .post_area{
     width: 850px;
     height: auto;
