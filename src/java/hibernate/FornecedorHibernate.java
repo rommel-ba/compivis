@@ -1,9 +1,7 @@
 package hibernate;
 
 import java.util.List;
-import model.Cliente;
 import model.Fornecedor;
-import model.Produto;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -53,7 +51,9 @@ public class FornecedorHibernate implements HibernatePersist<Fornecedor> {
         this.abrirConexao();
         Query query = sessao.createQuery("from Produto where ativo = true and nome like '" + nome+ "%'");
         query.setMaxResults(20);
-        return query.list();
+        List lista = query.list();
+        sessao.close();
+        return lista;
     }
 
     @Override
@@ -61,7 +61,9 @@ public class FornecedorHibernate implements HibernatePersist<Fornecedor> {
         this.abrirConexao();
         Query query = sessao.createQuery("from Produto where ativo = true and nome like '" + nome+ "%'");
         query.setMaxResults(20);
-        return query.list();
+        List lista = query.list();
+        sessao.close();
+        return lista;
     }
     
 }
