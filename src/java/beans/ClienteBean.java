@@ -4,11 +4,11 @@ import hibernate.ClienteHibernate;
 import hibernate.HibernatePersist;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import model.Cliente;
 
 @ManagedBean(name = "cliente")
-@RequestScoped
+@ViewScoped
 public class ClienteBean {
     private Cliente cliente = new Cliente();
     private String nome;
@@ -39,4 +39,7 @@ public class ClienteBean {
         this.nome = nome;
     }
     
+    public void atualizarNome(){
+        this.nome = cliente.getNome();
+    }
 }

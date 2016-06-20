@@ -40,6 +40,7 @@ public class ComprasBean{
         }
     }
 
+    
     public Cliente getClienteSelecionado() {
         return clienteSelecionado;
     }
@@ -96,6 +97,14 @@ public class ComprasBean{
                 valorTotal +=  p.getValor();
             }
         }
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
   
