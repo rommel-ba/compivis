@@ -4,13 +4,15 @@ import hibernate.ClienteHibernate;
 import hibernate.HibernatePersist;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import model.Cliente;
+import org.hibernate.Session;
 
 @ManagedBean(name = "cliente")
-@ViewScoped
+@SessionScoped
 public class ClienteBean {
     private Cliente cliente = new Cliente();
+    private Session sessao = null;
     private String nome;
     private HibernatePersist clienteHibernate = new ClienteHibernate();
     
@@ -42,4 +44,14 @@ public class ClienteBean {
     public void atualizarNome(){
         this.nome = cliente.getNome();
     }
+    
+    public void excluir(){
+        clienteHibernate.deletar(cliente);
+        cliente = new Cliente();
+    }
+    
+    public void editar(){
+        
+    }
+    
 }

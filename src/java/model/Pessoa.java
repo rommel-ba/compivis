@@ -49,5 +49,4 @@ public abstract class Pessoa implements Serializable{
         this.ativo = ativo;
     }
     
-    
 }
