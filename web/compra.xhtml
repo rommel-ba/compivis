@@ -20,8 +20,8 @@
 
                                 <h:commandButton value="Pesquisar" type="button" onclick="PF('popCliente').show(), PF('popCliente').setvisible(true)">
                                     <p:dialog widgetVar="popCliente" minHeight="40" minWidth="40" modal="true" closable="false">
-                                        <h:inputText value="#{cliente.nome}" id="nome"/>
-                                        <h:commandButton value="pesquisar" onclick="focus(nome)"/>
+                                        <h:inputText value="#{cliente.nome}"/>
+                                        <h:commandButton value="pesquisar"/>
                                         <h:dataTable value="#{cliente.lista}" var="clientes" rendered="#{not empty cliente.lista}">
                                             <h:column>
                                                 <f:facet name="header">Nome</f:facet>
@@ -34,12 +34,12 @@
                                         </h:dataTable> 
                                     </p:dialog>
                                 </h:commandButton>
+
                             </h:panelGrid>
                             <h:panelGrid columns="2">
                                 <h:outputLabel value="Buscar produto"/>
                                 <h:inputText value="#{produto.nome}"/>
                                 <h:commandButton value="Buscar"/>
-
                             </h:panelGrid>
                             <h:form id="lista-produtos">
                                 <h:dataTable value="#{produto.lista}" var="produtos" class="bordasimples" rendered="#{not empty produto.lista}">
@@ -70,7 +70,6 @@
                             </h:form>
                         </h:form>
                     </div>
-
                 </div>
             </h:form>
         </ui:define>
