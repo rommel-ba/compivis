@@ -12,7 +12,7 @@ and open the template in the editor.
     <ui:composition template="template.xhtml">
         <ui:define name="body">
             <h:form class="container">
-             <div class="title_page">Cadastrar Fornecedor</div>
+                <div class="title_page">Cadastrar Fornecedor</div>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Nome"/>
                     <h:inputText value="#{fornecedor.fornecedor.nome}" />
@@ -28,19 +28,19 @@ and open the template in the editor.
                     <h:outputLabel value="Buscar Cliente"/>
                     <h:inputText value="#{fornecedor.nome}"/>
                     <h:commandButton value="Buscar"/>
-                    
+
                 </h:panelGrid>
-                
-             <h:form id="lista-fornecedores">
-                 <h:dataTable value="#{fornecedor.lista}" var="fornecedores" class="bordasimples" rendered="#{not empty fornecedor.lista}">
-                    <f:facet name="header" class="bordasimples">Fornecedores cadastrados</f:facet>
-                    <h:column>
-                        <f:facet name="header">Nome</f:facet>
+
+                <h:form id="lista-fornecedores">
+                    <h:dataTable value="#{fornecedor.lista}" var="fornecedores" class="bordasimples" rendered="#{not empty fornecedor.lista}">
+                        <f:facet name="header" class="bordasimples">Fornecedores cadastrados</f:facet>
+                        <h:column>
+                            <f:facet name="header">Nome</f:facet>
                             <h:outputText value="#{fornecedores.nome}"/>
                         </h:column>
                         <h:column>
-                        <f:facet name="header">CNPJ</f:facet>
-                        #{fornecedores.cnpj}
+                            <f:facet name="header">CNPJ</f:facet>
+                            <h:outputText value="#{fornecedores.cnpj}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">Endereço</f:facet>
@@ -63,10 +63,10 @@ and open the template in the editor.
                             </h:commandButton>
                         </h:column>
                     </h:dataTable>                 
-             </h:form>
+                </h:form>
 
             </h:form>
         </ui:define>
-        
+
     </ui:composition>
 </html>

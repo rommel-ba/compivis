@@ -15,8 +15,8 @@
                         <h:form>
                             <h:panelGrid columns="3">
                                 <h:outputLabel value="Cliente"/>
-
-                                <h:inputText value="#{cliente.cliente.nome}"/>
+                                <h:outputText value="#{cliente.cliente.nome}"/>
+                                <h:outputText value="#{comprasBean.tamanho}"/>
 
                                 <h:commandButton value="Pesquisar" type="button" onclick="PF('popCliente').show(), PF('popCliente').setvisible(true)">
                                     <p:dialog widgetVar="popCliente" minHeight="40" minWidth="40" modal="true" closable="false">
@@ -28,13 +28,46 @@
                                                 <h:outputText value="#{clientes.nome}"/>
                                                 <h:commandButton value="Selecionar" >
                                                     <f:setPropertyActionListener target="#{cliente.cliente}" value="#{clientes}"/>
+                                                    <f:setPropertyActionListener target="#{comprasBean.clienteSelecionado}" value="#{clientes}"/>
                                                 </h:commandButton>
                                             </h:column>
                                         </h:dataTable> 
                                     </p:dialog>
                                 </h:commandButton>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel value="Buscar produto"/>
+                                <h:inputText value="#{produto.nome}"/>
+                                <h:commandButton value="Buscar"/>
 
                             </h:panelGrid>
+                            <h:form id="lista-produtos">
+                                <h:dataTable value="#{produto.lista}" var="produtos" class="bordasimples" rendered="#{not empty produto.lista}">
+                                    <f:facet name="header" class="bordasimples">Produtos cadastrados</f:facet>
+                                    <h:column>
+                                        <f:facet name="header">Nome</f:facet>
+                                        <h:outputText value="#{produtos.nome}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Descrição</f:facet>
+                                        <h:outputText value="#{produtos.descricao}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Estoque</f:facet>
+                                        <h:outputText value="#{produtos.estoque}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Valor</f:facet>
+                                        <h:outputText value="#{produtos.valor}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Editar</f:facet>
+                                        <h:commandButton value="Adicionarr" action="#{comprasBean.addItem()}">
+                                            <f:setPropertyActionListener target="#{comprasBean.produto}" value="#{produtos}"/>
+                                        </h:commandButton>
+                                    </h:column>
+                                </h:dataTable>
+                            </h:form>
                         </h:form>
                     </div>
 

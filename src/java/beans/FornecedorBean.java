@@ -5,12 +5,12 @@ import hibernate.FornecedorHibernate;
 import hibernate.HibernatePersist;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import model.Fornecedor;
 import org.hibernate.Session;
 
 @ManagedBean(name = "fornecedor")
-@RequestScoped
+@ViewScoped
 public class FornecedorBean {
     private Fornecedor fornecedor = new Fornecedor();
     private Session sessao = null;
@@ -26,7 +26,11 @@ public class FornecedorBean {
     }
     
     public void cadastrar(){
-        fornecedorHibernate.salvar(fornecedor);
+        if(fornecedor.getId() == 0){
+            fornecedorHibernate.salvar(fornecedor);
+        }else{
+            fornecedorHibernate.atualizar(fornecedor);
+        }
         fornecedor = new Fornecedor();
     }
     

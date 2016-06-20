@@ -32,6 +32,9 @@ public class ClienteBean {
     public List getLista(){
         return clienteHibernate.listarAtivo(nome);
     }
+    public List getListaCompra(){
+        return clienteHibernate.listarAtivo(cliente.getNome());
+    }
 
     public String getNome() {
         return nome;
