@@ -26,7 +26,7 @@ public class TesteBanco {
             
         }
         String consulta = "9";
-        Query query = sessao.createQuery("from PessoaFisica");
+        Query query = sessao.createQuery("from Cliente");
         query.setMaxResults(1);
         Cliente pessoa = (Cliente) query.uniqueResult();
         System.out.println("Query primeira pessoa = "+pessoa.getNome());

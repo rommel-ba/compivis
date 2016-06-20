@@ -31,6 +31,10 @@ public class ProdutoBean {
         produto = new Produto();
     }
     
+    public void excluir(){
+        produtoHibernate.deletar(produto);
+    }
+    
     public List getLista(){
         return produtoHibernate.listarAtivo(nome);
     }
@@ -43,4 +47,7 @@ public class ProdutoBean {
         this.nome = nome;
     }
     
+    public void editar(){
+        
+    }
 }

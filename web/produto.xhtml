@@ -12,53 +12,62 @@ and open the template in the editor.
     <ui:composition template="template.xhtml">
         <ui:define name="body">
             <h:form class="container" enctype="multipart/form-data">
+                <h:panelGrid>
                 <div class="left_cont">
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="Nome"/>
-                    <h:inputText value="#{produto.produto.nome}" />
-                    <h:outputLabel value="Descrição"/>
-                    <h:inputText value="#{produto.produto.descricao}" />
-                    <h:outputLabel value="Valor"/>
-                    <h:inputText value="#{produto.produto.valor}"/>
-                    <h:outputLabel value="Estoque"/>
-                    <h:inputText value="#{produto.produto.estoque}"/>
-                </h:panelGrid>                    
-                <h:commandButton value="Salvar" action="#{produto.cadastrar}"/>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Nome"/>
+                        <h:inputText value="#{produto.produto.nome}" />
+                        <h:outputLabel value="Descrição"/>
+                        <h:inputText value="#{produto.produto.descricao}" />
+                        <h:outputLabel value="Valor"/>
+                        <h:inputText value="#{produto.produto.valor}"/>
+                        <h:outputLabel value="Estoque"/>
+                        <h:inputText value="#{produto.produto.estoque}"/>
+                    </h:panelGrid>                    
+                    <h:commandButton value="Salvar" action="#{produto.cadastrar}"/>
                 </div>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Buscar produto"/>
                     <h:inputText value="#{produto.nome}"/>
+                    <h:commandButton value="Buscar"/>
                 </h:panelGrid>
-                <h:form id="lista-produtos">
-                <h:dataTable value="#{produto.lista}" var="produtos" class="bordasimples">
-                    <f:facet name="header" class="bordasimples">Produtos cadastrados</f:facet>
-                    <h:column>
-                        <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="#{produtos.nome}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Descrição</f:facet>
-                        <h:outputText value="#{produtos.descricao}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Estoque</f:facet>
-                        <h:outputText value="#{produtos.estoque}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Valor</f:facet>
-                        <h:outputText value="#{produtos.valor}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Editar</f:facet>
-                        <h:outputText value="Editar"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Excluir</f:facet>
-                        <h:outputText value="Excluir"/>
-                    </h:column>
-                </h:dataTable>
+                
+                    <h:form id="lista-produtos">
+                    <h:dataTable value="#{produto.lista}" var="produtos" class="bordasimples">
+                        <f:facet name="header" class="bordasimples">Produtos cadastrados</f:facet>
+                        <h:column>
+                            <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{produtos.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Descrição</f:facet>
+                            <h:outputText value="#{produtos.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Estoque</f:facet>
+                            <h:outputText value="#{produtos.estoque}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Valor</f:facet>
+                            <h:outputText value="#{produtos.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Editar</f:facet>
+                            <h:commandButton value="Editar" action="#{produto.editar()}">
+                                <f:setPropertyActionListener target="#{produto.produto}" value="#{produtos}"/>
+                            </h:commandButton>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Excluir</f:facet>
+                            <h:commandButton value="Excluir" action="#{produto.excluir()}">
+                                <f:setPropertyActionListener target="#{produto.produto}" value="#{produtos}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+                </h:panelGrid>
             </h:form>
-            </h:form>           
+            
         </ui:define>
         
     </ui:composition>
