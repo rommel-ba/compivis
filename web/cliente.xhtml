@@ -24,11 +24,47 @@ and open the template in the editor.
                     <h:inputText value="#{cliente.cliente.dataNascimento}"/>
                     <h:commandButton value="Cadastrar" action="#{cliente.cadastrar}"/>
                 </h:panelGrid>
-                <h:dataTable value="#{cliente.lista}" var="clientes" >
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Buscar Cliente"/>
+                    <h:inputText value="#{cliente.nome}"/>
+                    <h:commandButton value="Buscar"/>
+                    
+                </h:panelGrid>
+                
+             <h:form id="lista-clientes">
+                 <h:dataTable value="#{cliente.lista}" var="clientes" class="bordasimples" rendered="#{not empty cliente.lista}">
+                    <f:facet name="header" class="bordasimples">Clientes cadastrados</f:facet>
                     <h:column>
-                        #{clientes.nome} 
-                    </h:column>
-                </h:dataTable>
+                        <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{clientes.nome}"/>
+                        </h:column>
+                        <h:column>
+                        <f:facet name="header">CPF</f:facet>
+                        <h:outputText value="#{clientes.cpf}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Endereço</f:facet>
+                            <h:outputText value="#{clientes.endereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Nascimento</f:facet>
+                            <h:outputText value="#{clientes.dataNascimento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Editar</f:facet>
+                            <h:commandButton value="Editar" action="#{cliente.editar()}">
+                                <f:setPropertyActionListener target="#{cliente.cliente}" value="#{clientes}"/>
+                            </h:commandButton>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Excluir</f:facet>
+                            <h:commandButton value="Excluir" action="#{cliente.excluir()}">
+                                <f:setPropertyActionListener target="#{cliente.cliente}" value="#{clientes}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>                 
+             </h:form>
+
                 
             </h:form>
             

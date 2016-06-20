@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition template="template.xhtml">
         <ui:define name="body">
             <h:form class="container">
@@ -23,8 +24,48 @@ and open the template in the editor.
                     <h:inputText value="#{fornecedor.fornecedor.telefone}"/>
                 </h:panelGrid>
                 <h:commandButton value="Cadastrar" action="#{fornecedor.cadastrar}"/>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Buscar Cliente"/>
+                    <h:inputText value="#{fornecedor.nome}"/>
+                    <h:commandButton value="Buscar"/>
+                    
+                </h:panelGrid>
+                
+             <h:form id="lista-fornecedores">
+                 <h:dataTable value="#{fornecedor.lista}" var="fornecedores" class="bordasimples" rendered="#{not empty fornecedor.lista}">
+                    <f:facet name="header" class="bordasimples">Fornecedores cadastrados</f:facet>
+                    <h:column>
+                        <f:facet name="header">Nome</f:facet>
+                            <h:outputText value="#{fornecedores.nome}"/>
+                        </h:column>
+                        <h:column>
+                        <f:facet name="header">CNPJ</f:facet>
+                        #{fornecedores.cnpj}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Endereço</f:facet>
+                            <h:outputText value="#{fornecedores.endereco}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Telefone</f:facet>
+                            <h:outputText value="#{fornecedores.telefone}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Editar</f:facet>
+                            <h:commandButton value="Editar" action="#{fornecedor.editar()}">
+                                <f:setPropertyActionListener target="#{fornecedor.fornecedor}" value="#{fornecedores}"/>
+                            </h:commandButton>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Excluir</f:facet>
+                            <h:commandButton value="Excluir" action="#{fornecedor.excluir()}">
+                                <f:setPropertyActionListener target="#{fornecedor.fornecedor}" value="#{fornecedores}"/>
+                            </h:commandButton>
+                        </h:column>
+                    </h:dataTable>                 
+             </h:form>
+
             </h:form>
-            <h:outputText value="#{fornecedor.fornecedor.nome}" rendered="#{fornecedor.fornecedor.nome.length() > 0}"></h:outputText>
         </ui:define>
         
     </ui:composition>
