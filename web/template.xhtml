@@ -4,7 +4,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <f:view contentType="text/html">
         <ui:insert name="head">
             <h:head>
@@ -24,6 +25,7 @@
                     <div class="logo">
                         <a href="index.xhtml"><img src="images/logo_1.png" alt="Logo COMPIVI$" width="170px" height="38px"></img></a>
                     </div>
+                      <div id="menu">
                     <nav>
                       <ul class="menu">
                                 <li><a href="compra.xhtml">Comprar</a></li>
@@ -44,7 +46,10 @@
                             </li>
                     </ul>
                     </nav>
-                  </div>
+
+                          
+                      </div>
+                </div>
 
                 </div>
            </ui:insert>   
