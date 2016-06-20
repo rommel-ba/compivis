@@ -13,8 +13,8 @@ and open the template in the editor.
     <ui:composition template="template.xhtml">
         <ui:define name="body">
             <h:form class="container" enctype="multipart/form-data">
+             <div class="title_page">Cadastrar Produto</div>
                 <h:panelGrid>
-                <div class="left_cont">
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Nome"/>
                         <h:inputText value="#{produto.produto.nome}" />
@@ -26,14 +26,13 @@ and open the template in the editor.
                         <h:inputText value="#{produto.produto.estoque}"/>
                     </h:panelGrid>                    
                     <h:commandButton value="Salvar" action="#{produto.cadastrar}"/>
-                </div>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="Buscar produto"/>
                     <h:inputText value="#{produto.nome}"/>
                     <h:commandButton value="Buscar"/>
                     
                 </h:panelGrid>
-                
+                </h:panelGrid>
                     <h:form id="lista-produtos">
                         <h:dataTable value="#{produto.lista}" var="produtos" class="bordasimples" rendered="#{not empty produto.lista}">
                         <f:facet name="header" class="bordasimples">Produtos cadastrados</f:facet>
@@ -67,7 +66,6 @@ and open the template in the editor.
                         </h:column>
                     </h:dataTable>
                 </h:form>
-                </h:panelGrid>
             </h:form>
             
         </ui:define>
