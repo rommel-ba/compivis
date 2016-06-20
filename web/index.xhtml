@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="template.xhtml">
         <ui:define name="body">    
@@ -10,6 +11,12 @@
                 <div class="container">
                         <div class="title_page">> Teste</div>
                         <div class="post_area">
+                            <h:commandButton value="Popup" type="button" onclick="PF('pop').show(),PF('pop').setvisible(true);">
+                                <p:dialog header="Teste popup" widgetVar="pop" minHeight="40" minWidth="40">
+                                    <h:outputLabel value="Texto Simples"/>
+                                    <h:inputText/>
+                                </p:dialog>
+                                </h:commandButton>
                           <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer elit libero, 
                             aliquam at mattis eu, maximus vel sapien.
