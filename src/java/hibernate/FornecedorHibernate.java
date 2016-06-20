@@ -65,5 +65,6 @@ public class FornecedorHibernate implements HibernatePersist<Fornecedor> {
         sessao.close();
         return lista;
     }
+
     
 }

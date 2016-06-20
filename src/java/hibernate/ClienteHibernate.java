@@ -49,7 +49,7 @@ public class ClienteHibernate implements HibernatePersist<Cliente> {
     @Override
     public List listarTodos(String nome) {
         this.abrirConexao();
-        Query query = sessao.createQuery("from Produto where ativo = true and nome like '" + nome+ "%'");
+        Query query = sessao.createQuery("from Cliente where ativo = true and nome like '" + nome+ "%'");
         query.setMaxResults(20);
         List lista = query.list();
         sessao.close();
@@ -59,7 +59,7 @@ public class ClienteHibernate implements HibernatePersist<Cliente> {
     @Override
     public List listarAtivo(String nome) {
         this.abrirConexao();
-        Query query = sessao.createQuery("from Produto where ativo = true and nome like '" + nome+ "%'");
+        Query query = sessao.createQuery("from Cliente where ativo = true and nome like '" + nome+ "%'");
         query.setMaxResults(20);
         List lista = query.list();
         sessao.close();

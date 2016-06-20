@@ -17,6 +17,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "compras")
 public class Compra extends Pedido {
+    
+    private boolean ativo;
+    
     @ManyToOne(targetEntity = Cliente.class, cascade = CascadeType.ALL)
     private Cliente pessoaFisica;
     
@@ -70,5 +73,12 @@ public class Compra extends Pedido {
     
     public Item getProduto(){
         return items.get(0);
+    }
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }

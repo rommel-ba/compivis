@@ -20,6 +20,7 @@ public class Venda extends Pedido {
     private Fornecedor pessoaJuridica;
     @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
     private List<Item> items;
+    private boolean ativo;
 
     public Venda() {
         this.items = new ArrayList<>();
@@ -54,5 +55,13 @@ public class Venda extends Pedido {
         for (Item item1 : items){
             item1.getProduto().setEstoque(item1.getQuantidade());
         }
+    }
+    
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }
