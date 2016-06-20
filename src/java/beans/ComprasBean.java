@@ -44,8 +44,10 @@ public class ComprasBean {
         item.setProduto(produto);
         itens.add(item);
     }
-
-
+    public List getListaItens(){
+        return itens;
+    }
+    
     public int getTamanho() {
         return itens.size();
     }

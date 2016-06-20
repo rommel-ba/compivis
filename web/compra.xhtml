@@ -41,6 +41,33 @@
                                 <h:inputText value="#{produto.nome}"/>
                                 <h:commandButton value="Buscar"/>
                             </h:panelGrid>
+                            <h:dataTable value="#{comprasBean.listaItens}" var="itens" class="bordasimples" rendered="#{not empty comprasBean.listaItens}">
+                                <f:facet name="header" class="bordasimples">Produtos cadastrados</f:facet>
+                                <h:column>
+                                    <f:facet name="header">Nome</f:facet>
+                                    <h:outputText value="#{itens.produto.nome}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Descrição</f:facet>
+                                    <h:outputText value="#{itens.produto.descricao}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Preço</f:facet>
+                                    <h:outputText value="#{itens.valor}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Total</f:facet>
+                                    <h:outputText value="#{itens.total}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Editar</f:facet>
+                                    <h:commandButton value="Adicionar" action="#{comprasBean.addItem()}">
+                                        <f:setPropertyActionListener target="#{comprasBean.produto}" value="#{produtos}"/>
+                                    </h:commandButton>
+                                </h:column>
+                            </h:dataTable>
+                            <br/><br/><br/>
+                            
                             <h:form id="lista-produtos">
                                 <h:dataTable value="#{produto.lista}" var="produtos" class="bordasimples" rendered="#{not empty produto.lista}">
                                     <f:facet name="header" class="bordasimples">Produtos cadastrados</f:facet>
@@ -62,7 +89,7 @@
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Editar</f:facet>
-                                        <h:commandButton value="Adicionarr" action="#{comprasBean.addItem()}">
+                                        <h:commandButton value="Adicionar" action="#{comprasBean.addItem()}">
                                             <f:setPropertyActionListener target="#{comprasBean.produto}" value="#{produtos}"/>
                                         </h:commandButton>
                                     </h:column>
