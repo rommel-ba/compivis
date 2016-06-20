@@ -27,12 +27,17 @@ public class ProdutoBean {
     }
     
     public void cadastrar(){
-        produtoHibernate.salvar(produto);
+        if(produto.getId() == 0){
+            produtoHibernate.salvar(produto);
+        }else{
+            produtoHibernate.atualizar(produto);
+        }
         produto = new Produto();
     }
     
     public void excluir(){
         produtoHibernate.deletar(produto);
+        produto = new Produto();
     }
     
     public List getLista(){
